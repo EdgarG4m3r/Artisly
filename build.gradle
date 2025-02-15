@@ -1,0 +1,73 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id "application"
+}
+
+group 'dev.apollo.artisly'
+version '1.0-SNAPSHOT'
+
+
+apply plugin : "java"
+ext {
+    javaMainClass = "dev.apollo.artisly.Artisly"
+}
+
+application {
+    mainClassName = javaMainClass
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    //lombok
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+    testCompileOnly 'org.projectlombok:lombok:1.18.26'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    //databases
+    implementation 'redis.clients:jedis:5.0.0-alpha2'
+    implementation 'mysql:mysql-connector-java:8.0.33'
+    implementation 'com.zaxxer:HikariCP:5.0.1'
+
+    //webserver
+    implementation group: 'io.javalin', name: 'javalin', version: '5.3.1'
+    implementation group: 'org.ini4j', name: 'ini4j', version: '0.5.4'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
+    implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.13.3'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'org.slf4j:slf4j-simple:2.0.5'
+
+    //cryptography
+    implementation 'de.mkammerer:argon2-jvm:2.11'
+
+    //cache
+    implementation group: 'com.google.guava', name: 'guava', version: '30.1.1-jre'
+
+    //file validation
+    implementation 'org.apache.tika:tika-core:2.7.0'
+
+    //mailer
+    implementation 'org.simplejavamail:simple-java-mail:8.0.0'
+
+    //html parser
+    implementation 'org.jsoup:jsoup:1.15.4'
+
+    //s3
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.12.470'
+
+    //algolia
+    implementation 'com.algolia:algoliasearch-core:3.16.6'
+    implementation 'com.algolia:algoliasearch-java-net:3.16.6'
+
+    //pdf
+    implementation 'com.itextpdf:itextpdf:5.5.13.3'
+    implementation 'org.apache.pdfbox:pdfbox:3.0.0-RC1'
+
+
+}
